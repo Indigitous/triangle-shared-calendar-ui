@@ -59,8 +59,8 @@
     </md-toolbar>
 
      <md-content flex md-scroll-y>
-      <div layout="row">
-        <div flex offset="33" offset-sm="0">
+      <div layout="row" layout-align="center">
+        <div>
           <md-button ng-click="" aria-label="Yesterday">
             <md-icon md-font-icon="material-icons" ng-click="ul.changeDate(-1)">arrow_back</md-icon>
           </md-button>
@@ -70,9 +70,8 @@
           </md-button>
         </div>
       </div>
-      <ui-view layout="column" layout-fill layout-padding>
-        <div class="inset" hide-sm></div>
-          <md-card flex-gt-sm="90" flex-gt-md="80">
+      <ui-view layout="column" layout-align="center center" layout-fill layout-padding>
+          <md-card flex-gt-sm="100" flex-gt-md="80">
             <md-card-content>
               <h2>Events</h2>
               <md-list-item ng-repeat="it in ul.events | filter:ul.search">
