@@ -13,6 +13,107 @@
    * @constructor
    */
   function EventService($q){
+     var data = {
+        "found": 8,
+        "start": 0,
+        "events": [{
+            "companyName": "Hope Community Church",
+            "companyCity": "Raleigh",
+            "companyState": "North Carolina",
+            "companyPostalCode": "27606",
+            "companyCountry": "United States",
+            "startTime": "2015-12-01T00:00:00Z",
+            "endTime": "2015-12-01T01:30:00Z",
+            "uid": "29712-1448928000-1448933400@www.gethope.net",
+            "summary": "On the Journey to Authentic Manhood - A man and his design",
+            "description": "Men, ever wondered how to live a life of truth, passion and purpose? Authentic Manhood is a gospel-centered study designed to encourage you as you pursue God’s promises. This six-week class is the first in a series of five classes centered on helping men be godly in every area of life. Titled “33 The Series” after Jesus’ 33 years on Earth, this multi-volume, gospel-centered video series presents the timeless truths of Authentic Manhood in a powerfully new and engaging way, including inspiring testimonies, expert interviews and multiple creative features.  Each session will begin with a time of large group teaching followed by small group discussion.  Monday nights Sept. 28-Dec. 7, 7-8:30 p.m. in The Loft.  Cost is $20.  Questions?  [button id=\"\" style=\"filled-small\" class=\"\" align=\"\" link=\"https://hopecommunitychurch.wufoo.com/forms/r1xw3qbi1l3ay9y/\" linkTarget=\"_blank\" bgColor=\"accent1\" hover_color=\"accent1\" font=\"24\" icon=\"arrow-right4\" icon_placement=\"left\" icon_color=\"\"]Register here[/button]",
+            "allDayEvent": false
+        }, {
+            "companyName": "Hope Community Church",
+            "companyCity": "Raleigh",
+            "companyState": "North Carolina",
+            "companyPostalCode": "27606",
+            "companyCountry": "United States",
+            "startTime": "2015-12-01T23:30:00Z",
+            "endTime": "2015-12-02T01:00:00Z",
+            "uid": "23674-1449012600-1449018000@www.gethope.net",
+            "summary": "Military/Family Support Group",
+            "description": "This group offers encouragement and support to the active duty, guard, reserve, retired, veterans, and family members. Gatherings are held the first Tuesday of each month at the Raleigh campus.  Questions? Contact the organizer.",
+            "allDayEvent": false
+        }, {
+            "companyName": "Hope Community Church",
+            "companyCity": "Raleigh",
+            "companyState": "North Carolina",
+            "companyPostalCode": "27606",
+            "companyCountry": "United States",
+            "startTime": "2015-12-02T14:30:00Z",
+            "endTime": "2015-12-02T16:00:00Z",
+            "uid": "29353-1449066600-1449072000@www.gethope.net",
+            "summary": "Mom's Coffee Break",
+            "description": "We realize it’s hard to meet other moms with life’s many demands. At Mom’s Coffee Break, you will be encouraged, inspired and have the opportunity to connect with other women. Don't miss this opportunity, and be sure to invite your neighbor, friend or walking buddy! We’ll have a special interest speaker for each month with discussion time around tables led by mentor moms. This is a great opportunity to meet other moms in the Triangle. 9:30-11 a.m. at the Raleigh campus the first Wednesday of every month. Need childcare? Please pre-register a week before the event. Valet parking is also provided free of charge by Hope staff!",
+            "allDayEvent": false
+        }, {
+            "companyName": "Hope Community Church",
+            "companyCity": "Raleigh",
+            "companyState": "North Carolina",
+            "companyPostalCode": "27606",
+            "companyCountry": "United States",
+            "startTime": "2015-12-03T00:00:00Z",
+            "endTime": "2015-12-03T02:00:00Z",
+            "uid": "29248-1449100800-1449108000@www.gethope.net",
+            "summary": "HSM: Pulse",
+            "description": "High school students — bored at church? Need something just for you? Pulse is the answer.  Meeting the first Wednesday of every month, at Pulse you’re a part of something awesome. Here, you’ll be challenged, encouraged and equipped in an environment created just for you. All while making new friends and having fun. Sound good? Join us!  Doors open at 6:30 p.m. Pulse starts at 7 p.m.  [button id=\"\" style=\"filled-small\" class=\"\" align=\"\" link=\"http://students.gethope.net/hsm/what-is-pulse/\" linkTarget=\"_blank\" bgColor=\"accent1\" hover_color=\"accent1\" font=\"24\" icon=\"arrow-right4\" icon_placement=\"left\" icon_color=\"\"]Shuttle times and locations[/button]",
+            "allDayEvent": false
+        }, {
+            "companyName": "Hope Community Church",
+            "companyCity": "Raleigh",
+            "companyState": "North Carolina",
+            "companyPostalCode": "27606",
+            "companyCountry": "United States",
+            "startTime": "2015-12-03T23:30:00Z",
+            "endTime": "2015-12-04T01:00:00Z",
+            "uid": "28820-1449185400-1449190800@www.gethope.net",
+            "summary": "DivorceCare",
+            "description": "This 13-week class that runs from Sept. 3 - Dec. 3 provides a friendly, caring group of people who will walk alongside you through one of life’s most difficult experiences.  [button id=\"\" style=\"filled-small\" class=\"\" align=\"\" link=\"https://hopecommunitychurch.wufoo.com/forms/rvnabcn1gqgqc0/\" linkTarget=\"_blank\" bgColor=\"accent1\" hover_color=\"accent1\" font=\"24\" icon=\"arrow-right4\" icon_placement=\"left\" icon_color=\"\"]Register here[/button]",
+            "allDayEvent": false
+        }, {
+            "companyName": "Hope Community Church",
+            "companyCity": "Raleigh",
+            "companyState": "North Carolina",
+            "companyPostalCode": "27606",
+            "companyCountry": "United States",
+            "startTime": "2015-12-03T23:30:00Z",
+            "endTime": "2015-12-04T01:00:00Z",
+            "uid": "28836-1449185400-1449190800@www.gethope.net",
+            "summary": "DivorceCare 4 Kids",
+            "description": "This 13-week class, Sept. 3- Dec. 3, provides a safe and caring environment for children of divorce to experience hope, help and restoration.  [button id=\"\" style=\"filled-small\" class=\"\" align=\"\" link=\"https://hopecommunitychurch.wufoo.com/forms/rvnabcn1gqgqc0/\" linkTarget=\"_blank\" bgColor=\"accent1\" hover_color=\"accent1\" font=\"24\" icon=\"arrow-right4\" icon_placement=\"left\" icon_color=\"\"]Register here[/button]",
+            "allDayEvent": false
+        }, {
+            "companyName": "Hope Community Church",
+            "companyCity": "Raleigh",
+            "companyState": "North Carolina",
+            "companyPostalCode": "27606",
+            "companyCountry": "United States",
+            "startTime": "2015-12-05T05:00:00Z",
+            "endTime": "2015-12-06T05:00:00Z",
+            "uid": "30426-1449291600-1449377999@www.gethope.net",
+            "summary": "Communion",
+            "description": "Join us for communion immediately after each service this weekend.  \"For whenever you eat this bread and drink this cup, you proclaim the Lord's death until he comes.\" 1 Corinthians 11:26",
+            "allDayEvent": true
+        }, {
+            "companyName": "Hope Community Church",
+            "companyCity": "Raleigh",
+            "companyState": "North Carolina",
+            "companyPostalCode": "27606",
+            "companyCountry": "United States",
+            "startTime": "2015-12-05T22:15:00Z",
+            "endTime": "2015-12-06T00:30:00Z",
+            "uid": "25912-1449353700-1449361800@www.gethope.net",
+            "summary": "Communion",
+            "description": "Join us for communion immediately after each service this weekend.  \"For whenever you eat this bread and drink this cup, you proclaim the Lord's death until he comes.\" 1 Corinthians 11:26",
+            "allDayEvent": false
+        }]
+    };
     var events = [
       {
         name: 'Lia Lugo is a silly person with a crazy long last name',
@@ -50,7 +151,7 @@
     return {
       loadAllEvents : function() {
         // Simulate async nature of real remote calls
-        return $q.when(events);
+        return $q.when(data.events);
       }
     };
   }

@@ -71,17 +71,31 @@
         </div>
       </div>
       <ui-view layout="column" layout-align="center center" layout-fill layout-padding>
-          <md-card flex-gt-sm="100" flex-gt-md="80">
+        <md-list flex-gt-md="80">
+          <md-subheader>Events</md-subheader>
+          <md-list-item ng-repeat="event in ul.events | filter:ul.search">
+              <img ng-src="assets/Hope-Logo-trans@2xDark.png" class="md-avatar" alt="Hope Community Church Logo" width="100px">
+              <div class="md-list-item-text">
+                <h3>{{event.summary}}</h3>
+                <p>{{event.companyName}}, {{event.companyCity}}</p>
+                <p><b>Start Time:</b> {{event.startTime | date:'MMM dd, yyyy - h:mm a' }}</p>
+                </div>
+          </md-list-item>
+        </md-list>
+
+
+<!--           <md-card flex-gt-sm="100" flex-gt-md="80">
             <md-card-content>
               <h2>Events</h2>
               <md-list-item ng-repeat="it in ul.events | filter:ul.search">
                   <md-button ng-click="ul.selectEvent(it)" ng-class="{'selected' : it === ul.selected }">
                       <md-icon md-svg-icon="{{it.avatar}}" class="avatar"></md-icon>
-                      {{it.name}}
+                      <img src="assets/Hope-Logo-trans@2xDark.png" alt="Hope Community Church Logo" width="100px">
+                      {{it.summary}}
                   </md-button>
               </md-list-item>
             </md-card-content>
-          </md-card>
+          </md-card> -->
         </ui-view>
       </md-content>
 
