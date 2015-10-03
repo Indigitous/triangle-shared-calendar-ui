@@ -32,8 +32,8 @@
     eventService
           .get(self.selectedDate)
           .then( function( events ) {
-            self.events    = [].concat(events);
-            self.selected = events[0];
+            self.events    = [].concat(events.data.events);
+            self.selected = events.data.events[0];
           });
 
     // *********************************

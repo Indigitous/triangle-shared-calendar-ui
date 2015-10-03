@@ -77,7 +77,7 @@
               <md-list-item ng-repeat="it in ul.events | filter:ul.search">
                   <md-button ng-click="ul.selectEvent(it)" ng-class="{'selected' : it === ul.selected }">
                       <md-icon md-svg-icon="{{it.avatar}}" class="avatar"></md-icon>
-                      {{it.name}}
+                      {{it.summary}}
                   </md-button>
               </md-list-item>
             </md-card-content>
