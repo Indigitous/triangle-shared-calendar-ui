@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('events')
-         .service('eventService', ['$q', '$http', 'ApiUrl', EventService]);
+         .service('eventService', ['$q', '$http', '$filter', 'ApiUrl', EventService]);
 
   /**
    * Events DataService
@@ -12,20 +12,21 @@
    * @returns {{loadAll: Function}}
    * @constructor
    */
-  function EventService($q, $http, ApiUrl){
-    var deferredEvents = $q.defer();
+  function EventService($q, $http, $filter, ApiUrl){
 
-    $http.get(ApiUrl.get() + 'startDate/2015-12-01T00:00:00Z', headers)
-    	.then(function(data) {
-    		deferredEvents.resolve(data);
-    	}, function(reason) {
-    		deferredEvents.reject(reason);
-    	});
-    
-    // Promise-based API
-    return {
-      get : function() {return deferredEvents.promise;}
-    };
+	this.get = function(startDate) {
+		var deferredEvents = $q.defer();
+	    var isoStartDate = $filter('date')(startDate,'yyyy-MM-ddTHH:mm:ss');
+	    
+	    $http.get(ApiUrl.get() + 'startDate/' + isoStartDate + 'Z')
+    		.then(function(data) {
+    			deferredEvents.resolve(data);
+	    	}, function(reason) {
+    			deferredEvents.reject(reason);
+    		});
+    	
+    	return deferredEvents.promise;
+	};
   }
 
 })();
