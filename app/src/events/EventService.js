@@ -14,10 +14,7 @@
    */
   function EventService($q, $http, ApiUrl){
     var deferredEvents = $q.defer();
-    var headers = {
-    	'Content-Type' : 'application/json' 
-    };
-    
+
     $http.get(ApiUrl.get() + 'startDate/2015-12-01T00:00:00Z', headers)
     	.then(function(data) {
     		deferredEvents.resolve(data);
