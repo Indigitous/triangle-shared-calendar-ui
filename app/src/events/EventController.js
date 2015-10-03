@@ -21,8 +21,10 @@
     self.events        = [ ];
     self.selectEvent   = selectEvent;
     self.toggleList   = toggleEventsList;
+    self.changeDate   = changeDate;
 
-    // Load all registered users
+    self.date = new Date();
+    self.selectedDate = self.date;
 
     eventService
           .loadAllEvents()
@@ -34,6 +36,14 @@
     // *********************************
     // Internal methods
     // *********************************
+
+    function changeDate(changeBy) {
+      this.selectedDate = new Date(
+        this.selectedDate.getFullYear(),
+        this.selectedDate.getMonth(),
+        this.selectedDate.getDate() + changeBy
+      );
+    }
 
     /**
      * First hide the bottomsheet IF visible, then

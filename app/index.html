@@ -59,19 +59,30 @@
     </md-toolbar>
 
      <md-content flex md-scroll-y>
-        <ui-view layout="column" layout-fill layout-padding>
-          <div class="inset" hide-sm></div>
-            <md-card flex-gt-sm="90" flex-gt-md="80">
-              <md-card-content>
-                <h2>Events</h2>
-                <md-list-item ng-repeat="it in ul.events | filter:ul.search">
-                    <md-button ng-click="ul.selectEvent(it)" ng-class="{'selected' : it === ul.selected }">
-                        <md-icon md-svg-icon="{{it.avatar}}" class="avatar"></md-icon>
-                        {{it.name}}
-                    </md-button>
-                </md-list-item>
-              </md-card-content>
-            </md-card>
+      <div layout="row">
+        <div flex offset="33" offset-sm="0">
+          <md-button ng-click="" aria-label="Yesterday">
+            <md-icon md-font-icon="material-icons" ng-click="ul.changeDate(-1)">arrow_back</md-icon>
+          </md-button>
+          <md-datepicker ng-model="ul.selectedDate"></md-datepicker>
+          <md-button ng-click="" aria-label="Tomorrow">
+            <md-icon md-font-icon="material-icons" ng-click="ul.changeDate(1)">arrow_forward</md-icon>
+          </md-button>
+        </div>
+      </div>
+      <ui-view layout="column" layout-fill layout-padding>
+        <div class="inset" hide-sm></div>
+          <md-card flex-gt-sm="90" flex-gt-md="80">
+            <md-card-content>
+              <h2>Events</h2>
+              <md-list-item ng-repeat="it in ul.events | filter:ul.search">
+                  <md-button ng-click="ul.selectEvent(it)" ng-class="{'selected' : it === ul.selected }">
+                      <md-icon md-svg-icon="{{it.avatar}}" class="avatar"></md-icon>
+                      {{it.name}}
+                  </md-button>
+              </md-list-item>
+            </md-card-content>
+          </md-card>
         </ui-view>
       </md-content>
 
