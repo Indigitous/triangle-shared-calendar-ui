@@ -14,11 +14,19 @@
    */
   function EventService($q, $http, $filter, ApiUrl){
 
-	this.get = function(startDate) {
+	this.get = function(startDate, pageSize, pageStart) {
 		var deferredEvents = $q.defer();
-	    var isoStartDate = $filter('date')(startDate,'yyyy-MM-ddTHH:mm:ss');
+		
+	    var isoStartDate = $filter('date')(startDate || new Date(),'yyyy-MM-ddTHH:mm:ss');
 	    
-	    $http.get(ApiUrl.get() + 'startDate/' + isoStartDate + 'Z')
+	    var config = {
+	    	params: {
+				size : pageSize || 50,
+				start : pageStart || 0	
+			}
+		};
+		
+	    $http.get(ApiUrl.get() + 'startDate/' + isoStartDate + 'Z', config)
     		.then(function(data) {
     			deferredEvents.resolve(data);
 	    	}, function(reason) {
