@@ -2,6 +2,10 @@
 
   angular
        .module('events')
+       .config(function ($httpProvider) {
+			$httpProvider.defaults.headers.common['Accept'] = 'application/json';
+            $httpProvider.defaults.headers.common['Content-Type'] =  'application/json';
+		})
        .controller('EventController', [
           'eventService', '$mdSidenav', '$mdBottomSheet', '$log', '$q',
           EventController
