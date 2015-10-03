@@ -27,7 +27,7 @@
     self.selectedDate = self.date;
 
     eventService
-          .loadAllEvents()
+          .get()
           .then( function( events ) {
             self.events    = [].concat(events);
             self.selected = events[0];
