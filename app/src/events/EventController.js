@@ -46,6 +46,13 @@
         this.selectedDate.getMonth(),
         this.selectedDate.getDate() + changeBy
       );
+      
+      eventService
+          .get(self.selectedDate)
+          .then( function( events ) {
+            self.events    = [].concat(events.data.events);
+            self.selected = events.data.events[0];
+          });
     }
 
     /**
