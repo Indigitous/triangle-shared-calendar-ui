@@ -22,7 +22,6 @@
 
         self.selected = null;
         self.events = [];
-        self.selectEvent = selectEvent;
         self.changeDate = changeDate;
         self.loadEvents = loadEvents;
         self.startSearch = startSearch;
@@ -109,15 +108,6 @@
                         clickOutsideToClose: true
                     });
                 });
-        }
-
-        /**
-         * Select the current avatars
-         * @param menuId
-         */
-        function selectEvent(user) {
-            self.selected = angular.isNumber(user) ? $scope.events[event] : event;
-            self.toggleList();
         }
     }
 
