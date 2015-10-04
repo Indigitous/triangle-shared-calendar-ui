@@ -6,7 +6,7 @@
 			$httpProvider.defaults.headers.common['Accept'] = 'application/json';
 		})
        .controller('EventController', [
-          'eventService', 'EventDetailController', '$mdDialog', '$log', '$q',
+          'eventService', '$controller', '$mdDialog', '$log', '$q',
           EventController
        ]);
 
@@ -17,9 +17,10 @@
    * @param avatarsService
    * @constructor
    */
-  function EventController( eventService, EventDetailController, $mdDialog, $log, $q) {
+  function EventController( eventService, $controller, $mdDialog, $log, $q) {
     var self = this;
-
+	var EventDetailController = $controller('EventDetailController');
+	
     self.selected     = null;
     self.events        = [ ];
     self.selectEvent   = selectEvent;
