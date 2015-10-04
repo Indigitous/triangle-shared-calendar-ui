@@ -107,6 +107,7 @@
                         bindToController: true,
                         clickOutsideToClose: true
                     });
+                    setTimeout(addthisevent.refresh, 1000);
                 });
         }
     }
