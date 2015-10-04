@@ -96,7 +96,7 @@
             <md-progress-circular md-mode="indeterminate"></md-progress-circular>
           </div>
           <div ng-show="ul.noEventsFound">No Events Found!</div>
-          <md-list-item ng-repeat="event in ul.events | filter:ul.search">
+          <md-list-item ng-click="ul.showEvent(event.uid)" ng-repeat="event in ul.events | filter:ul.search">
             <img ng-src="{{event.companyImageUrl}}" class="md-avatar" alt="Hope Community Church Logo" width="100px">
             <div class="md-list-item-text">
               <h3>{{event.summary}}</h3>
@@ -115,6 +115,7 @@
     <script type="text/javascript" src="./bower_components/angular-material/angular-material.js"></script>
 
     <script src="./src/events/Events.js"></script>
+    <script src="./src/events/EventDetailController.js"></script>
     <script src="./src/events/EventController.js"></script>
     <script src="./src/events/EventService.js"></script>
     <script src="./src/services/apiUrl/apiUrl.service.js"></script>
