@@ -9,13 +9,24 @@
         </div>
     </md-toolbar>
     <md-dialog-content>
-    	<h2>{{dialog.event.data.companyName}}</h2>
+        <h2>{{dialog.event.data.companyName}}</h2>
         <p>{{dialog.event.data.companyName}}, {{dialog.event.data.companyCity}}, {{dialog.event.data.companyState}}, {{dialog.event.data.companyPostalCode}}</p>
         <p><b>Start Time: </b>{{dialog.event.data.startTime | date:'MMM dd, yyyy - h:mm a' }}</p>
         <p><b>End Time: </b>{{dialog.event.data.endTime | date:'MMM dd, yyyy - h:mm a' }}</p>
-		<p>{{dialog.event.data.description}}</p>
-		<p><a href="{{dialog.event.data.url}}" target="_blank">Go to Event Page</a></p>
+        <p>{{dialog.event.data.description}}</p>
+        <p><a href="{{dialog.event.data.url}}" target="_blank">Go to Event Page</a></p>
     </md-dialog-content>
     <div class="md-actions" layout="row">
+        <div title="Add to Calendar" class="addthisevent">
+        	Add to Calendar
+            <span class="start">{{dialog.event.data.startTime | date:'MMM dd, yyyy - h:mm a' }}</span>
+            <span class="end">{{dialog.event.data.endTime | date:'MMM dd, yyyy - h:mm a' }}</span>
+            <span class="timezone">America/New_York</span>
+            <span class="title">{{dialog.event.data.summary}}</span>
+            <span class="description">{{dialog.event.data.description}}</span>
+            <span class="location">{{dialog.event.data.companyName}}, {{dialog.event.data.companyCity}}, {{dialog.event.data.companyState}}, {{dialog.event.data.companyPostalCode}}</span>
+            <span class="organizer">{{dialog.event.data.companyName}}</span>
+            <span class="date_format">MM/DD/YYYY</span>
+    	</div>
     </div>
 </md-dialog>
