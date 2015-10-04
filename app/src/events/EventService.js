@@ -86,10 +86,10 @@
 	    	}, function(reason) {
     			deferredEvents.reject(reason);
     		});
+	 	},{
+	 		maximumAge : 60000
 	 	});
 	 	
-	    
-    	
     	return deferredEvents.promise;
 	};
   }
