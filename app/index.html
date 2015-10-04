@@ -63,12 +63,12 @@
       <div layout="column" layout-align="center center">
         <div layout="row" layout-align="center">
           <div>
-            <md-button ng-click="" aria-label="Yesterday">
-              <md-icon md-font-icon="material-icons" ng-click="ul.changeDate(-1)">arrow_back</md-icon>
+            <md-button  ng-click="ul.changeDate(-1)" aria-label="Yesterday">
+              <md-icon md-font-icon="material-icons">arrow_back</md-icon>
             </md-button>
-            <md-datepicker ng-model="ul.selectedDate"></md-datepicker>
-            <md-button ng-click="" aria-label="Tomorrow">
-              <md-icon md-font-icon="material-icons" ng-click="ul.changeDate(1)">arrow_forward</md-icon>
+            <md-datepicker ng-model="ul.selectedDate" ng-change="ul.dateChanged()"></md-datepicker>
+            <md-button ng-click="ul.changeDate(1)" aria-label="Tomorrow">
+              <md-icon md-font-icon="material-icons">arrow_forward</md-icon>
             </md-button>
           </div>
         </div>
@@ -83,10 +83,13 @@
         </div>
       </div>
       </md-subheader>
-      <!-- <md-subheader class="md-primary">Events</md-subheader> -->
       <section layout="column" layout-align="center center" layout-fill layout-padding>
         <md-list flex-gt-md="80">
           <md-subheader class="md-no-sticky"><h1>Events</h1></md-subheader>
+          <div layout="row" layout-sm="column" layout-align="space-around" ng-show="ul.loadingEvents">
+            <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+          </div>
+          <div ng-show="!ul.events && !ul.loadingEvents"></div>
           <md-list-item ng-repeat="event in ul.events | filter:ul.search">
             <img ng-src="{{event.companyImageUrl}}" class="md-avatar" alt="Hope Community Church Logo" width="100px">
             <div class="md-list-item-text">
