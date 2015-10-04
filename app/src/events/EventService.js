@@ -106,7 +106,7 @@
 			deferredEvent.reject(reason);
 		});
 		
-		return deferredEvents.promise;
+		return deferredEvent.promise;
 	}
 	
 	this.findEvents = function(searchTerms) {
