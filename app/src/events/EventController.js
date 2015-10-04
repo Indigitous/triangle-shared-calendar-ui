@@ -26,13 +26,14 @@
     self.toggleList   = toggleEventsList;
     self.changeDate   = changeDate;
     self.loadEvents   = loadEvents;
+    self.loadingEvents = true;
 
     self.date = new Date();
     self.selectedDate = self.date;
 
-	self.distance = 50;
+	   self.distance = 20;
 	
-	loadEvents();
+	   loadEvents();
 	
     // *********************************
     // Internal methods
@@ -44,20 +45,30 @@
         this.selectedDate.getMonth(),
         this.selectedDate.getDate() + changeBy
       );
-    }
+
+      loadEvents();
+    };
     
     function loadEvents() {
+      // Clear the events and show the loading icon
+      self.events = [];
+      self.loadingEvents = true;
+      self.noEventsFound = false;
+
       eventService
           .getEvents(self.selectedDate, 50, 0, self.distance)
           .then( function( events ) {
             if(events.data && events.data.events) {
             	self.events = [].concat(events.data.events);
-			} else {
-				self.events = [];
-			}
+      			} else {
+      				self.events = [];
+              self.noEventsFound = true;
+      			}
             if(events.data && events.data.events) self.selected = events.data.events[0];
+
+            self.loadingEvents = false;
           });    
-    }
+    };
 
     /**
      * First hide the bottomsheet IF visible, then
@@ -79,41 +90,6 @@
       self.selected = angular.isNumber(user) ? $scope.events[event] : event;
       self.toggleList();
     }
-
-    /**
-     * Show the bottom sheet
-     */
-    function showContactOptions($event) {
-        var event = self.selected;
-
-        return $mdBottomSheet.show({
-          parent: angular.element(document.getElementById('content')),
-          templateUrl: './src/events/view/contactSheet.html',
-          controller: [ '$mdBottomSheet', ContactPanelController],
-          controllerAs: "cp",
-          bindToController : true,
-          targetEvent: $event
-        }).then(function(clickedItem) {
-          clickedItem && $log.debug( clickedItem.name + ' clicked!');
-        });
-
-        /**
-         * Bottom Sheet controller for the Avatar Actions
-         */
-        function ContactPanelController( $mdBottomSheet ) {
-          this.event = event;
-          this.actions = [
-            { name: 'Phone'       , icon: 'phone'       , icon_url: 'assets/svg/phone.svg'},
-            { name: 'Twitter'     , icon: 'twitter'     , icon_url: 'assets/svg/twitter.svg'},
-            { name: 'Google+'     , icon: 'google_plus' , icon_url: 'assets/svg/google_plus.svg'},
-            { name: 'Hangout'     , icon: 'hangouts'    , icon_url: 'assets/svg/hangouts.svg'}
-          ];
-          this.submitContact = function(action) {
-            $mdBottomSheet.hide(action);
-          };
-        }
-    }
-
   }
 
 })();
