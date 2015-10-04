@@ -6,7 +6,7 @@
 			$httpProvider.defaults.headers.common['Accept'] = 'application/json';
 		})
        .controller('EventController', [
-          'eventService', '$mdSidenav', '$mdBottomSheet', '$log', '$q',
+          'eventService', 'EventDetailController', '$mdDialog', '$log', '$q',
           EventController
        ]);
 
@@ -17,16 +17,16 @@
    * @param avatarsService
    * @constructor
    */
-  function EventController( eventService, $mdSidenav, $log, $q) {
+  function EventController( eventService, EventDetailController, $mdDialog, $log, $q) {
     var self = this;
 
     self.selected     = null;
     self.events        = [ ];
     self.selectEvent   = selectEvent;
-    self.toggleList   = toggleEventsList;
     self.changeDate   = changeDate;
     self.loadEvents   = loadEvents;
     self.startSearch  = startSearch;
+    self.showEvent    = showEvent;
     self.loadingEvents = true;
 
     self.date = new Date();
@@ -90,16 +90,20 @@
 			});    
     };
 
-    /**
-     * First hide the bottomsheet IF visible, then
-     * hide or Show the 'left' sideNav area
-     */
-    function toggleEventsList() {
-      var pending = $mdBottomSheet.hide() || $q.when(true);
-
-      pending.then(function(){
-        $mdSidenav('left').toggle();
+    function showEvent(eventId) {
+      $mdDialog.show({
+        controller: EventDetailController,
+        template: '<p>Foobar</p>',
+        parent: angular.element(document.body),
+        targetEvent: eventId
       });
+
+
+      // eventService
+      //   .getEvent(eventId)
+      //   .then( function(event) {
+      //     alert(event);
+      //   });
     }
 
     /**
