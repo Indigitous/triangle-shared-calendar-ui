@@ -105,6 +105,7 @@
                         parent: angular.element(document.body),
                         targetEvent: eventId,
                         locals: {'event': event},
+                        bindToController: true,
                         clickOutsideToClose: true
                     });
                 });
