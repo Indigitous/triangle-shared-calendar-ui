@@ -29,13 +29,8 @@
     self.date = new Date();
     self.selectedDate = self.date;
 
-    eventService
-          .get(self.selectedDate)
-          .then( function( events ) {
-            self.events    = [].concat(events.data.events);
-            self.selected = events.data.events[0];
-          });
-
+	loadEvents();
+	
     // *********************************
     // Internal methods
     // *********************************
@@ -47,12 +42,16 @@
         this.selectedDate.getDate() + changeBy
       );
       
+		loadEvents();
+    }
+    
+    function loadEvents() {
       eventService
-          .get(self.selectedDate)
+          .getEvents(self.selectedDate)
           .then( function( events ) {
             self.events    = [].concat(events.data.events);
             self.selected = events.data.events[0];
-          });
+          });    
     }
 
     /**

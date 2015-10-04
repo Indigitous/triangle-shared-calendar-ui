@@ -60,7 +60,7 @@
 		}
 	};
 	
-	this.get = function(startDate, pageSize, pageStart, distance) {
+	this.getEvents = function(startDate, pageSize, pageStart, distance) {
 		var deferredEvents = $q.defer();
 		
 	    var config = {
@@ -92,6 +92,18 @@
 	 	
     	return deferredEvents.promise;
 	};
+	
+	this.getEvent = function(eventId) {
+		var deferredEvent = $q.defer();
+		
+		$http.get(ApiUrl.get() + 'events/' + eventId).then(function(data) {
+			deferredEvent.resolve(data);
+		}, function(reason){
+			deferredEvent.reject(reason);
+		});
+		
+		return deferredEvents.promise;
+	}
   }
 
 })();
