@@ -60,6 +60,10 @@
 		}
 	};
 	
+	var searchPath = function(searchTerms) {
+		return 'search/' + encodeURIComponent(searchTerms);
+	}
+	
 	this.getEvents = function(startDate, pageSize, pageStart, distance) {
 		var deferredEvents = $q.defer();
 		
@@ -100,6 +104,18 @@
 			deferredEvent.resolve(data);
 		}, function(reason){
 			deferredEvent.reject(reason);
+		});
+		
+		return deferredEvents.promise;
+	}
+	
+	this.findEvents = function(searchTerms) {
+		var deferredEvents = $q.defer();
+		
+		$http.get(ApiUrl.get() + searchPath(searchTerms)).then(function(data) {
+			deferredEvents.resolve(data);
+		}, function(reason) {
+			deferredEvents.reject(reason);
 		});
 		
 		return deferredEvents.promise;

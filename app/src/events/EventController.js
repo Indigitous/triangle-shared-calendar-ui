@@ -26,14 +26,15 @@
     self.toggleList   = toggleEventsList;
     self.changeDate   = changeDate;
     self.loadEvents   = loadEvents;
+    self.startSearch  = startSearch;
     self.loadingEvents = true;
 
     self.date = new Date();
     self.selectedDate = self.date;
 
-	   self.distance = 20;
+	self.distance = 20;
 	
-	   loadEvents();
+	loadEvents();
 	
     // *********************************
     // Internal methods
@@ -49,25 +50,44 @@
       loadEvents();
     };
     
+    function prepareForApiDownload() {
+		// Clear the events and show the loading icon
+		self.events = [];
+		self.loadingEvents = true;
+		self.noEventsFound = false;
+    }
+    
+    function handleApiDownload(events) {
+    	if(events.data && events.data.events) {
+			self.events = [].concat(events.data.events);
+		} else {
+			self.events = [];
+			self.noEventsFound = true;
+		}
+
+		if(events.data && events.data.events) self.selected = events.data.events[0];
+
+		self.loadingEvents = false;
+	}
+    
+    function startSearch() {
+		prepareForApiDownload();
+
+    	eventService
+    		.findEvents(self.search)
+    		.then( function (events) {
+				handleApiDownload(events);
+			});
+	};
+    
     function loadEvents() {
-      // Clear the events and show the loading icon
-      self.events = [];
-      self.loadingEvents = true;
-      self.noEventsFound = false;
+		prepareForApiDownload();
 
-      eventService
-          .getEvents(self.selectedDate, 50, 0, self.distance)
-          .then( function( events ) {
-            if(events.data && events.data.events) {
-            	self.events = [].concat(events.data.events);
-      			} else {
-      				self.events = [];
-              self.noEventsFound = true;
-      			}
-            if(events.data && events.data.events) self.selected = events.data.events[0];
-
-            self.loadingEvents = false;
-          });    
+		eventService
+			.getEvents(self.selectedDate, 50, 0, self.distance)
+			.then( function( events ) {
+				handleApiDownload(events);
+			});    
     };
 
     /**
