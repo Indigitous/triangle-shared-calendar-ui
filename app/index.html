@@ -27,7 +27,8 @@
 
   <body ng-app="app" layout="row" ng-controller="EventController as ul" ng-cloak >
 
-  <div flex layout="column" tabIndex="-1" role="main" class="md-whiteframe-z2">
+  <div flex layout="column" tabIndex="-1" role="main" class="md-whiteframe-z2" 
+        md-swipe-right="ul.changeDate(-1)" md-swipe-left="ul.changeDate(1)">
 
     <md-toolbar ng-show="!showSearch">
       <div class="md-toolbar-tools">
@@ -63,11 +64,11 @@
       <div layout="column" layout-align="center center">
         <div layout="row" layout-align="center">
           <div>
-            <md-button ng-click="ul.changeDate(-1)" aria-label="Yesterday">
+            <md-button ng-click="ul.changeDate(-1)" aria-label="Yesterday" hide-sm>
               <md-icon md-font-icon="material-icons">arrow_back</md-icon>
             </md-button>
             <md-datepicker ng-model="ul.selectedDate" ng-change="ul.loadEvents()"></md-datepicker>
-            <md-button ng-click="ul.changeDate(1)" aria-label="Tomorrow">
+            <md-button ng-click="ul.changeDate(1)" aria-label="Tomorrow" hide-sm>
               <md-icon md-font-icon="material-icons">arrow_forward</md-icon>
             </md-button>
           </div>
