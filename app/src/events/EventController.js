@@ -25,6 +25,8 @@
     self.selectEvent   = selectEvent;
     self.toggleList   = toggleEventsList;
     self.changeDate   = changeDate;
+    self.loadEvents   = loadEvents;
+    self.distance     = 30;
 
     self.date = new Date();
     self.selectedDate = self.date;

@@ -74,10 +74,12 @@
         </div>
         <span style="color: blue" ng-click="ul.showAdvanced = true" ng-show="!ul.showAdvanced">Advanced Search</span>
         <div ng-show="ul.showAdvanced">
-          <md-input-container>
-            <label>Search radius (miles):</label>
-            <input ng-model="ul.distance">
-          </md-input-container>
+          <form ng-submit="ul.loadEvents">
+            <md-input-container>
+              <label>Search radius (miles):</label>
+              <input ng-model="ul.distance">
+            </md-input-container>
+          </form>
         </div>
       </div>
       </md-subheader>
