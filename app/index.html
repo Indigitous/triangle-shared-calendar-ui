@@ -66,7 +66,7 @@
             <md-button ng-click="" aria-label="Yesterday">
               <md-icon md-font-icon="material-icons" ng-click="ul.changeDate(-1)">arrow_back</md-icon>
             </md-button>
-            <md-datepicker ng-model="ul.selectedDate"></md-datepicker>
+            <md-datepicker ng-model="ul.selectedDate" ng-change="ul.loadEvents()"></md-datepicker>
             <md-button ng-click="" aria-label="Tomorrow">
               <md-icon md-font-icon="material-icons" ng-click="ul.changeDate(1)">arrow_forward</md-icon>
             </md-button>
@@ -77,7 +77,12 @@
           <form ng-submit="ul.loadEvents">
             <md-input-container>
               <label>Search radius (miles):</label>
-              <input ng-model="ul.distance">
+              <md-select ng-model="ul.distance" ng-change="ul.loadEvents()">
+              	<md-option value="10">10</md-option>
+				<md-option value="20">20</md-option>
+				<md-option value="50">50</md-option>
+              </md-select>
+              
             </md-input-container>
           </form>
         </div>

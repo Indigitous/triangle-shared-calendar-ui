@@ -26,11 +26,12 @@
     self.toggleList   = toggleEventsList;
     self.changeDate   = changeDate;
     self.loadEvents   = loadEvents;
-    self.distance     = 30;
 
     self.date = new Date();
     self.selectedDate = self.date;
 
+	self.distance = 50;
+	
 	loadEvents();
 	
     // *********************************
@@ -43,16 +44,18 @@
         this.selectedDate.getMonth(),
         this.selectedDate.getDate() + changeBy
       );
-      
-		loadEvents();
     }
     
     function loadEvents() {
       eventService
-          .getEvents(self.selectedDate)
+          .getEvents(self.selectedDate, 50, 0, self.distance)
           .then( function( events ) {
-            self.events    = [].concat(events.data.events);
-            self.selected = events.data.events[0];
+            if(events.data && events.data.events) {
+            	self.events = [].concat(events.data.events);
+			} else {
+				self.events = [];
+			}
+            if(events.data && events.data.events) self.selected = events.data.events[0];
           });    
     }
 
